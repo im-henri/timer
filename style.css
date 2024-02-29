@@ -1,0 +1,58 @@
+body {
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    margin: 30px;
+    background-color: #ededed;
+}
+
+#exercise-count {
+    color: #2b2b2b;
+    font-size: 40px;
+    margin: 25px;
+}
+
+#exercise-name {
+    color: #2b2b2b;
+    font-size: 40px;
+    margin: 25px;
+}
+
+#timer {
+    color: #2b2b2b;
+    font-size: 55px;
+    margin: 25px;
+}
+
+#set-count {
+    color: #2b2b2b;
+    font-size: 30px;
+    margin: 25px;
+}
+
+#set-count {
+    color: #2b2b2b;
+    font-size: 30px;
+    margin: 25px;
+}
+
+#welcomeText {
+    color: #2b2b2b;
+    font-size: 35px;
+    margin: 20px;
+}
+
+#progress-bar-container {
+    width: 85%;
+    margin: 20px auto;
+    background-color: #c2c0c0;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#progress-bar {
+    width: 0;
+    height: 65px;
+    background-color: #4caf50;
+    transition: width 0.5s;
+    /* transition-timing-function: linear; */
+}
