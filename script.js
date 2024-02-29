@@ -5,7 +5,7 @@ const exercises = [
     //2
     { name: "Ab crunch"             , workoutTime:  40, setCount: 2, pauseTime: 20, soundAtHalf: false },
     //3
-    { name: "Jumping Jack"          , workoutTime:  40, setCount: 2, pauseTime: 20, soundAtHalf: false },
+    { name: "Jumping Jacks"         , workoutTime:  40, setCount: 2, pauseTime: 20, soundAtHalf: false },
     //4
     { name: "Back muscle"           , workoutTime: 120, setCount: 1, pauseTime: 20, soundAtHalf: false },
     //5
@@ -48,7 +48,7 @@ let intervalId = 0;
 
 // Initial values to have time to set down phone
 let exercise_name       = exercises[currentExercise].name;
-let pauseTimer          = 2; // adjust this;
+let pauseTimer          = 10; // adjust this;
 let currentSet          = 0;
 let workoutTimer        = 0;
 let pauseState          = 1;
