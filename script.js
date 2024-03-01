@@ -72,9 +72,6 @@ function updateUI() {
         // Set exercise start sound
         if (pauseState === 0 && workoutTimer === exercises[currentExercise].workoutTime)
             startSound.play();
-        // Set pause start sound
-        if (pauseState === 1 && pauseTimer === exercises[currentExercise].pauseTime-1)
-            pauseSound.play();
         // Half-way through sound
         if (exercises[currentExercise].soundAtHalf === true && workoutTimer === exercises[currentExercise].workoutTime/2) {
             halfWaySound.play();
@@ -152,6 +149,9 @@ function startWorkout() {
         if (workoutTimer > 0) {
             pauseState = 0;
             workoutTimer--;
+            // Play pause sound when set done
+            if (workoutTimer === 0)
+                pauseSound.play();
         }
         // Pause timer. On last set of last exercise, skip pause.
         else if (pauseTimer - 1 > 0 && currentExercise < exercises.length-1) {
