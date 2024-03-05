@@ -3,7 +3,7 @@ const exercises = [
     //1
     { name: "Lunges"                , workoutTime:  40, setCount: 2, pauseTime: 20, soundAtHalf: false },
     //2
-    { name: "Ab crunch"             , workoutTime:  40, setCount: 2, pauseTime: 20, soundAtHalf: false },
+    { name: "Ab crunch"             , workoutTime: 120, setCount: 1, pauseTime: 20, soundAtHalf: false },
     //3
     { name: "Jumping Jacks"         , workoutTime:  40, setCount: 2, pauseTime: 20, soundAtHalf: false },
     //4
