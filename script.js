@@ -58,6 +58,23 @@ const startSound = document.getElementById("startSound");
 const pauseSound = document.getElementById("pauseSound");
 const halfWaySound = document.getElementById("halfWaySound");
 
+async function requestWakeLock() {
+    try {
+        wakeLock = await navigator.wakeLock.request('screen');
+        console.log('Screen wake lock acquired');
+    } catch (err) {
+        console.error(`Error while acquiring wake lock: ${err}`);
+    }
+}
+
+async function releaseWakeLock() {
+    if (wakeLock !== null) {
+        await wakeLock.release();
+        wakeLock = null;
+        console.log('Screen wake lock released');
+    }
+}
+
 function updateUI() {
     if (workoutDone === 1){
         return;
@@ -118,6 +135,7 @@ function updateUI() {
 }
 
 function finished() {
+    releaseWakeLock();
     clearInterval(intervalId);
     document.getElementById("exercise-count").innerText = `Exercise ${currentExercise} of ${exercises.length}`
     document.getElementById("exercise-name").innerText = "Workout Done";
@@ -142,6 +160,8 @@ function nextExercise() {
 }
 
 function startWorkout() {
+    requestWakeLock();
+
     updateUI();
 
     workoutDone = 0;
