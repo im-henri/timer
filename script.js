@@ -166,6 +166,8 @@ function startWorkout() {
 
     workoutDone = 0;
     intervalId = setInterval(() => {
+        requestWakeLock();
+
         if (workoutTimer > 0) {
             pauseState = 0;
             workoutTimer--;
