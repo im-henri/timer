@@ -1,46 +1,11 @@
-
-const exercises = [
-    //1
-    { name: "Lunges"                , workoutTime:  40, setCount: 2, pauseTime: 20, soundAtHalf: false },
-    //2
-    { name: "Ab crunch"             , workoutTime: 120, setCount: 1, pauseTime: 20, soundAtHalf: false },
-    //3
-    { name: "Jumping Jacks"         , workoutTime:  40, setCount: 2, pauseTime: 20, soundAtHalf: false },
-    //4
-    { name: "Back muscle"           , workoutTime: 120, setCount: 1, pauseTime: 20, soundAtHalf: false },
-    //5
-    { name: "Hand-leg touch jump"   , workoutTime:  40, setCount: 2, pauseTime: 20, soundAtHalf: false },
-    //6
-    { name: "Push-ups"              , workoutTime:  40, setCount: 2, pauseTime: 20, soundAtHalf: false },
-    //7
-    { name: "Side muscle"           , workoutTime: 120, setCount: 1, pauseTime: 20, soundAtHalf: true },
-    //8
-    { name: "Feet forward jump"     , workoutTime:  40, setCount: 2, pauseTime: 20, soundAtHalf: false },
-    //9
-    { name: "Straight leg lean"     , workoutTime:  40, setCount: 2, pauseTime: 20, soundAtHalf: false },
-    //10
-    { name: "Parachute jump"        , workoutTime:  40, setCount: 2, pauseTime: 20, soundAtHalf: false },
-    //11
-    { name: "Backwards lunge"       , workoutTime:  40, setCount: 2, pauseTime: 20, soundAtHalf: false },
-    //12
-    { name: "One leg jump"          , workoutTime:  40, setCount: 2, pauseTime: 20, soundAtHalf: false },
-    //13
-    { name: "Abs crossed arm"       , workoutTime:  40, setCount: 2, pauseTime: 20, soundAtHalf: false },
-    //14
-    { name: "AC-DC/Scrissor jump"   , workoutTime:  40, setCount: 2, pauseTime: 20, soundAtHalf: false },
-    //15
-    { name: "Easier leg lean"       , workoutTime:  40, setCount: 2, pauseTime: 20, soundAtHalf: false },
-    //16
-    { name: "Leg lift running"      , workoutTime:  40, setCount: 2, pauseTime: 20, soundAtHalf: false },
-    //17
-    { name: "One leg squats"        , workoutTime: 120, setCount: 1, pauseTime: 20, soundAtHalf: true },
-    //18
-    { name: "Planking"              , workoutTime:  40, setCount: 2, pauseTime: 20, soundAtHalf: false },
-    //19
-    { name: "Squat jumps"           , workoutTime:  40, setCount: 2, pauseTime: 20, soundAtHalf: false },
-    //20
-    { name: "Burpees"               , workoutTime: 120, setCount: 1, pauseTime: 20, soundAtHalf: false }
-];
+let workout_json_path = "Workouts/jokkeri_ventti.json";
+let exercises;
+// Read workout from file
+$.ajax({ url: workout_json_path,
+    dataType: 'json',
+    async: false, // Set it to synchronous
+    success: function(workout) { exercises = workout.exercises; }
+});
 
 let currentExercise = 0; // Index of the current exercise
 let workoutDone = 0;

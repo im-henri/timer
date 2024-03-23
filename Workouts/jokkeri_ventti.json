@@ -1,0 +1,143 @@
+{
+    "exercises":[
+    {
+        "name":"Lunges",
+        "workoutTime":40,
+        "setCount":2,
+        "pauseTime":20,
+        "soundAtHalf":false
+    },
+    {
+        "name":"Ab crunch",
+        "workoutTime":120,
+        "setCount":1,
+        "pauseTime":20,
+        "soundAtHalf":false
+    },
+    {
+        "name":"Jumping Jacks",
+        "workoutTime":40,
+        "setCount":2,
+        "pauseTime":20,
+        "soundAtHalf":false
+    },
+    {
+        "name":"Back muscle",
+        "workoutTime":120,
+        "setCount":1,
+        "pauseTime":20,
+        "soundAtHalf":false
+    },
+    {
+        "name":"Hand-leg touch jump",
+        "workoutTime":40,
+        "setCount":2,
+        "pauseTime":20,
+        "soundAtHalf":false
+    },
+    {
+        "name":"Push-ups",
+        "workoutTime":40,
+        "setCount":2,
+        "pauseTime":20,
+        "soundAtHalf":false
+    },
+    {
+        "name":"Side muscle",
+        "workoutTime":120,
+        "setCount":1,
+        "pauseTime":20,
+        "soundAtHalf":true
+    },
+    {
+        "name":"Feet forward jump",
+        "workoutTime":40,
+        "setCount":2,
+        "pauseTime":20,
+        "soundAtHalf":false
+    },
+    {
+        "name":"Straight leg lean",
+        "workoutTime":40,
+        "setCount":2,
+        "pauseTime":20,
+        "soundAtHalf":false
+    },
+    {
+        "name":"Parachute jump",
+        "workoutTime":40,
+        "setCount":2,
+        "pauseTime":20,
+        "soundAtHalf":false
+    },
+    {
+        "name":"Backwards lunge",
+        "workoutTime":40,
+        "setCount":2,
+        "pauseTime":20,
+        "soundAtHalf":false
+    },
+    {
+        "name":"One leg jump",
+        "workoutTime":40,
+        "setCount":2,
+        "pauseTime":20,
+        "soundAtHalf":false
+    },
+    {
+        "name":"Abs crossed arm",
+        "workoutTime":40,
+        "setCount":2,
+        "pauseTime":20,
+        "soundAtHalf":false
+    },
+    {
+        "name":"AC-DC/Scrissor jump",
+        "workoutTime":40,
+        "setCount":2,
+        "pauseTime":20,
+        "soundAtHalf":false
+    },
+    {
+        "name":"Easier leg lean",
+        "workoutTime":40,
+        "setCount":2,
+        "pauseTime":20,
+        "soundAtHalf":false
+    },
+    {
+        "name":"Leg lift running",
+        "workoutTime":40,
+        "setCount":2,
+        "pauseTime":20,
+        "soundAtHalf":false
+    },
+    {
+        "name":"One leg squats",
+        "workoutTime":120,
+        "setCount":1,
+        "pauseTime":20,
+        "soundAtHalf":true
+    },
+    {
+        "name":"Planking",
+        "workoutTime":40,
+        "setCount":2,
+        "pauseTime":20,
+        "soundAtHalf":false
+    },
+    {
+        "name":"Squat jumps",
+        "workoutTime":40,
+        "setCount":2,
+        "pauseTime":20,
+        "soundAtHalf":false
+    },
+    {
+        "name":"Burpees",
+        "workoutTime":120,
+        "setCount":1,
+        "pauseTime":20,
+        "soundAtHalf":false
+    }
+]}
