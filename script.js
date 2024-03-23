@@ -19,16 +19,26 @@ let workoutTimer        = 0;
 let pauseState          = 1;
 
 // Get audio elements
-const startSound = document.getElementById("startSound");
-const almostPauseSound = document.getElementById("almostPauseSound");
-const almostStartSound = document.getElementById("almostStartSound");
-const pauseSound = document.getElementById("pauseSound");
-const halfWaySound = document.getElementById("halfWaySound");
+const startSound        = new Audio('long_beep.mp3');
+const almostPauseSound  = new Audio('almostSound.mp3');
+const almostStartSound  = new Audio('almostSound.mp3');
+const pauseSound        = new Audio('short_beep.mp3');
+const intermediateSound = new Audio('intermediateSound.mp3');
+
+// Intermediate sounds
+let intermBeeps;         // Sorted list of intermediate beeps
+let intermBeeps_idx = -1; // Current index
+
+// State-machine states
+let state = 0;
+const STATE_NEW_SET   = 0;
+const STATE_WORKOUT = 1;
+const STATE_REST = 2;
 
 async function requestWakeLock() {
     try {
         wakeLock = await navigator.wakeLock.request('screen');
-        console.log('Screen wake lock acquired');
+        //console.log('Screen wake lock acquired');
     } catch (err) {
         console.error(`Error while acquiring wake lock: ${err}`);
     }
@@ -46,20 +56,8 @@ function updateUI() {
     if (workoutDone === 1){
         return;
     }
-    //
     if (currentExercise >= exercises.length) {
         return;
-    }
-
-    // Set is always > 0, execpt during the initial startup phase
-    if (currentSet != 0){
-        // Set exercise start sound
-        if (pauseState === 0 && workoutTimer === exercises[currentExercise].workoutTime)
-            startSound.play();
-        // Half-way through sound
-        if (exercises[currentExercise].soundAtHalf === true && workoutTimer === exercises[currentExercise].workoutTime/2) {
-            halfWaySound.play();
-        }
     }
     // Update progress bar
     const progressBar = document.getElementById("progress-bar");
@@ -126,6 +124,77 @@ function nextExercise() {
     updateUI();
 }
 
+// Separate function to update sound based on current exercise and set
+function updateSound() {
+    if (state == STATE_NEW_SET){
+        // Set exercise start sound
+        if (pauseState === 0 && workoutTimer === exercises[currentExercise].workoutTime)
+            startSound.play();
+        // Setup intermediate sound variables
+        intermBeeps_idx = -1; // Reset index
+        intermBeeps = exercises[currentExercise].intermediateBeeps;
+        // Check if the exercise has intermediate beep field in json
+        if (typeof intermBeeps !== 'undefined') {
+            intermBeeps_idx = intermBeeps.length-1;
+            // Sort timing array
+            intermBeeps = intermBeeps.sort(function(a, b) { return a - b; });
+        }
+    }
+    else if (state == STATE_WORKOUT) {
+        // Play pause sound when set done
+        if (workoutTimer === 0)
+            pauseSound.play();
+        // Play sound last few seconds
+        else if (workoutTimer <= 3 && workoutTimer > 0)
+            almostPauseSound.play();
+        // Play intermediate sounds
+        if (intermBeeps_idx >= 0){
+            if (workoutTimer <= intermBeeps[intermBeeps_idx]) {
+                intermediateSound.play();
+                intermBeeps_idx--;
+            }
+        }
+    }
+    // Pause timer. On last set of last exercise, skip pause.
+    else if (state == STATE_REST) {
+        // Play sound before pause end
+        if (pauseTimer <= 3 && pauseTimer > 0)
+            almostStartSound.play();
+    }
+}
+
+function statemachine() {
+    // Main state machine
+    if (workoutTimer > 0) {
+        pauseState = 0;
+        workoutTimer--;
+        state = STATE_WORKOUT;
+    }
+    // Pause timer. On last set of last exercise, skip pause.
+    else if (pauseTimer - 1 > 0 && currentExercise < exercises.length-1) {
+        pauseState = 1;
+        pauseTimer--;
+        state = STATE_REST;
+    }
+    else {
+        currentSet++;
+        if (currentSet > exercises[currentExercise].setCount) {
+            nextExercise();
+        } else {
+            workoutTimer = exercises[currentExercise].workoutTime;
+            pauseTimer = exercises[currentExercise].pauseTime;
+        }
+        //
+        if (currentExercise < exercises.length) {
+            exercise_name = exercises[currentExercise].name;
+        }
+        pauseState = 0;
+        state = STATE_NEW_SET;
+    }
+    updateSound();
+    updateUI();
+}
+
 function startWorkout() {
     requestWakeLock();
 
@@ -137,41 +206,8 @@ function startWorkout() {
         //       1. When workout starts.
         //       2. When user changes focus from the tab and comes back.
         requestWakeLock();
-
-        // Main state machine
-        if (workoutTimer > 0) {
-            pauseState = 0;
-            workoutTimer--;
-            // Play pause sound when set done
-            if (workoutTimer === 0)
-                pauseSound.play();
-            // Play sound last few seconds
-            else if (workoutTimer <= 3 && workoutTimer > 0)
-                almostPauseSound.play();
-        }
-        // Pause timer. On last set of last exercise, skip pause.
-        else if (pauseTimer - 1 > 0 && currentExercise < exercises.length-1) {
-            pauseState = 1;
-            pauseTimer--;
-            // Play sound before pause end
-            if (pauseTimer <= 3 && pauseTimer > 0)
-                almostStartSound.play();
-        }
-        else {
-            currentSet++;
-            if (currentSet > exercises[currentExercise].setCount) {
-                nextExercise();
-            } else {
-                workoutTimer = exercises[currentExercise].workoutTime;
-                pauseTimer = exercises[currentExercise].pauseTime;
-            }
-            //
-            if (currentExercise < exercises.length) {
-                exercise_name = exercises[currentExercise].name;
-            }
-            pauseState = 0;
-        }
-        updateUI();
+        //
+        statemachine();
     }, 1000);
 }
 
