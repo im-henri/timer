@@ -20,6 +20,8 @@ let pauseState          = 1;
 
 // Get audio elements
 const startSound = document.getElementById("startSound");
+const almostPauseSound = document.getElementById("almostPauseSound");
+const almostStartSound = document.getElementById("almostStartSound");
 const pauseSound = document.getElementById("pauseSound");
 const halfWaySound = document.getElementById("halfWaySound");
 
@@ -131,19 +133,29 @@ function startWorkout() {
 
     workoutDone = 0;
     intervalId = setInterval(() => {
+        // TODO: Don't constantly request wake lock, only lock when needed.
+        //       1. When workout starts.
+        //       2. When user changes focus from the tab and comes back.
         requestWakeLock();
 
+        // Main state machine
         if (workoutTimer > 0) {
             pauseState = 0;
             workoutTimer--;
             // Play pause sound when set done
             if (workoutTimer === 0)
                 pauseSound.play();
+            // Play sound last few seconds
+            else if (workoutTimer <= 3 && workoutTimer > 0)
+                almostPauseSound.play();
         }
         // Pause timer. On last set of last exercise, skip pause.
         else if (pauseTimer - 1 > 0 && currentExercise < exercises.length-1) {
             pauseState = 1;
             pauseTimer--;
+            // Play sound before pause end
+            if (pauseTimer <= 3 && pauseTimer > 0)
+                almostStartSound.play();
         }
         else {
             currentSet++;
