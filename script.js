@@ -29,6 +29,10 @@ const intermediateSound = new Audio('intermediateSound.mp3');
 let intermBeeps;         // Sorted list of intermediate beeps
 let intermBeeps_idx = -1; // Current index
 
+// Colors
+const COLOR_REST    = "#ffe7cd";
+const COLOR_WORKOUT = "#d7ffce";
+
 // State-machine states
 let state = 0;
 const STATE_NEW_SET   = 0;
@@ -163,6 +167,22 @@ function updateSound() {
     }
 }
 
+function updateColors() {
+    // Background color
+    if (state == STATE_NEW_SET){
+        document.body.style.backgroundColor = COLOR_WORKOUT;
+    }
+    else if (state == STATE_REST) {
+        document.body.style.backgroundColor = COLOR_REST;
+    }
+    else if (state == STATE_WORKOUT){
+        if (workoutTimer > 0)
+            document.body.style.backgroundColor = COLOR_WORKOUT;
+        else
+            document.body.style.backgroundColor = COLOR_REST;
+    }
+}
+
 function statemachine() {
     // Main state machine
     if (workoutTimer > 0) {
@@ -191,8 +211,10 @@ function statemachine() {
         pauseState = 0;
         state = STATE_NEW_SET;
     }
+    // Update
     updateSound();
     updateUI();
+    updateColors();
 }
 
 function startWorkout() {
