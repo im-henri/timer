@@ -5,6 +5,32 @@ body {
     background-color: #ededed;
 }
 
+/* Container for the layout */
+.container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border: 2px solid #ccc; /* Border for visualization */
+}
+
+/* Left side of the layout */
+.left {
+    flex: 4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Right side of the layout */
+.right {
+    flex: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 #startButton {
     background-color: #1c1f1c; /* Green background */
     border: none; /* Remove border */
@@ -57,8 +83,8 @@ body {
 }
 
 #progress-bar-container {
-    width: 85%;
-    margin: 20px auto;
+    width: 95%;
+    margin: 10px auto;
     background-color: #c2c0c0;
     border-radius: 10px;
     overflow: hidden;
@@ -66,7 +92,7 @@ body {
 
 #progress-bar {
     width: 0px;
-    height: 65px;
+    height: 100px;
     background-color: #4caf50;
     transition: width 0.5s;
     /* transition-timing-function: linear; */
