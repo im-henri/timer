@@ -221,9 +221,11 @@ function startWorkout() {
     requestWakeLock();
 
     updateUI();
-
+    // Reset text sizes to original
+    updateTextSizes(0);
     resetElementsWithText();
     storeElementsWithText();
+    // Re-set text size according to slider
     updateTextSize();
 
     workoutDone = 0;
@@ -287,7 +289,6 @@ function updateTextSize() {
 
 resetElementsWithText();
 storeElementsWithText();
-updateTextSize();
 
 let start_pressed = 0;
 // Must play sound by user request as modern browsers
