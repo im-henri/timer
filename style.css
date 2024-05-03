@@ -5,9 +5,30 @@ body {
     background-color: #ededed;
 }
 
+#startButton {
+    background-color: #1c1f1c; /* Green background */
+    border: none; /* Remove border */
+    color: white; /* White text */
+    padding: 15px 32px; /* Padding */
+    text-align: center; /* Center text */
+    text-decoration: none; /* Remove underline */
+    font-size: 35px; /* Font size */
+    margin-top: 40px; /* Margin on top */
+    border-radius: 8px; /* Rounded corners */
+}
+
+#textSizeSlider {
+    -webkit-appearance: none;
+    width: 25%;
+    height: 25px;
+    background: #c2c0c0; /* Gray background */
+    transition: opacity 0.2s; /* Smooth transition on hover */
+    border-radius: 6px; /* Rounded corners */
+}
+
 #exercise-count {
     color: #2b2b2b;
-    font-size: 40px;
+    font-size: 30px;
     margin: 25px;
 }
 
@@ -19,13 +40,7 @@ body {
 
 #timer {
     color: #2b2b2b;
-    font-size: 55px;
-    margin: 25px;
-}
-
-#set-count {
-    color: #2b2b2b;
-    font-size: 30px;
+    font-size: 70px;
     margin: 25px;
 }
 
@@ -50,7 +65,7 @@ body {
 }
 
 #progress-bar {
-    width: 0;
+    width: 0px;
     height: 65px;
     background-color: #4caf50;
     transition: width 0.5s;

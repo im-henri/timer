@@ -7,6 +7,14 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+    <div>
+        <input type="range" min="0" max="100" value="50"
+            id="textSizeSlider" oninput="updateTextSize()">
+    </div>
+    <!---------------------------->
+    <div><button id="startButton">Press to Start</button></div>
+    <!---------------------------->
     <div id="exercise-count"></div>
     <div id="exercise-name"></div>
     <div id="timer"></div>
@@ -14,8 +22,6 @@
     <div id="progress-bar-container">
         <div id="progress-bar" hidden></div>
     </div>
-    <!---------------------------->
-    <div id="welcomeText">Press to Start</div>
     <!------- Main script -------->
     <script src="jquery-3.7.1.js"></script>
     <script src="script.js"></script>

@@ -222,6 +222,10 @@ function startWorkout() {
 
     updateUI();
 
+    resetElementsWithText();
+    storeElementsWithText();
+    updateTextSize();
+
     workoutDone = 0;
     intervalId = setInterval(() => {
         // TODO: Don't constantly request wake lock, only lock when needed.
@@ -233,15 +237,90 @@ function startWorkout() {
     }, 1000);
 }
 
+// ----------------------------------------
+// -------------- Scaling UI --------------
+// ------                            ------
+let elementsWithText = []; // Array to store elements with text
+
+// Function to store elements containing text and their original font sizes
+function storeElementsWithText() {
+    elementsWithText = Array.from(document.querySelectorAll("*")).filter(element => {
+        // Filter elements that have non-empty text content
+        return element.textContent.trim().length > 0;
+    }).map(element => {
+        // For each element, store its original font size
+        const computedStyle = window.getComputedStyle(element);
+        const originalSize = parseFloat(computedStyle.getPropertyValue("font-size"));
+        return { element, originalSize };
+    });
+}
+
+// Function to reset the elementsWithText array
+function resetElementsWithText() {
+    elementsWithText = [];
+}
+
+// Function to update text sizes of elements relative to their original sizes
+function updateTextSizes(percentage) {
+    //console.log(percentage); // Outputs a message to the Web Console
+
+    // Iterate through the stored elements and update their text sizes
+    elementsWithText.forEach(({ element, originalSize }) => {
+        // Get the computed font size of the element
+        const computedStyle = window.getComputedStyle(element);
+        const currentSize = parseFloat(computedStyle.getPropertyValue("font-size"));
+        // Calculate the new font size relative to the original size
+        const newSize = originalSize * (1 + percentage / 100);
+        // Update the font size of the element
+        element.style.fontSize = newSize + "px";
+    });
+}
+
+// Function to update text size based on slider input
+function updateTextSize() {
+    const sliderValue = parseInt(document.getElementById("textSizeSlider").value);
+    updateTextSizes(sliderValue);
+}
+// ------                            ------
+// -------------- Scaling UI --------------
+// ----------------------------------------
+
+function debug_function()
+{
+    // Un-hide progress bar
+    document.getElementById("progress-bar").hidden = false;
+    updateUI();
+
+    workoutDone = 0;
+    requestWakeLock();
+    statemachine();
+    // Fake time forward
+    for (let i = 0; i < 1000; i++) {
+        statemachine();
+    }
+
+    // Example: Increase all text sizes by 10%
+    resetElementsWithText();
+    storeElementsWithText();
+    updateTextSize();
+}
+
+resetElementsWithText();
+storeElementsWithText();
+updateTextSize();
+
 // Must play sound by user request as modern browsers
 // don't allow playing sound without user request.
-document.addEventListener('click', () => {
+const startButton = document.getElementById("startButton");
+startButton.addEventListener('click', () => {
+    // Hide the button when clicked
+    startButton.hidden = true;
     // Play sound to user click
     pauseSound.play();
-    // Hide welcome text
-    document.getElementById("welcomeText").hidden = true;
     // Un-hide progress bar
     document.getElementById("progress-bar").hidden = false;
     //
     startWorkout();
 }, { once: true });
+
+//debug_function();
