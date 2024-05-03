@@ -288,7 +288,9 @@ function updateTextSize() {
 function debug_function()
 {
     // Un-hide progress bar
+    document.getElementById("progress-bar-container").hidden = false;
     document.getElementById("progress-bar").hidden = false;
+    document.getElementById("timer").hidden = false;
     updateUI();
 
     workoutDone = 0;
@@ -318,7 +320,9 @@ startButton.addEventListener('click', () => {
     // Play sound to user click
     pauseSound.play();
     // Un-hide progress bar
+    document.getElementById("progress-bar-container").hidden = false;
     document.getElementById("progress-bar").hidden = false;
+    document.getElementById("timer").hidden = false;
     //
     startWorkout();
 }, { once: true });

@@ -9,7 +9,7 @@
 <body>
 
     <div>
-        <input type="range" min="0" max="100" value="50"
+        <input type="range" min="-10" max="150" value="25" step="5"
             id="textSizeSlider" oninput="updateTextSize()">
     </div>
     <!---------------------------->
@@ -17,24 +17,13 @@
     <!---------------------------->
     <div id="exercise-count"></div>
     <div id="exercise-name"></div>
-    <!-- <div id="timer"></div> -->
     <div id="set-count"></div>
-    <!-- <div id="progress-bar-container"> -->
-    <!--     <div id="progress-bar" hidden></div> -->
-    <!-- </div> -->
     <div class="container">
-        <!-- Left side -->
-        <div class="left">
-            <div id="timer">Timer</div>
+        <div class="container_flex">
+            <div id="timer" hidden>Timer</div>
         </div>
-
-        <!-- Right side -->
-        <div class="right">
-
-            <div id="progress-bar-container">
-                <div id="progress-bar" hidden></div>
-            </div>
-
+        <div id="progress-bar-container" hidden>
+            <div id="progress-bar"></div>
         </div>
     </div>
 
