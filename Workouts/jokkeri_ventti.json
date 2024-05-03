@@ -7,7 +7,7 @@
         "pauseTime":20
     },
     {
-        "name":"Ab crunch",
+        "name":"Ab Crunch",
         "workoutTime":120,
         "setCount":1,
         "pauseTime":20
@@ -19,19 +19,19 @@
         "pauseTime":20
     },
     {
-        "name":"Back muscle",
+        "name":"Back Extension",
         "workoutTime":120,
         "setCount":1,
         "pauseTime":20
     },
     {
-        "name":"Hand-leg touch jump",
+        "name":"Hand-leg Touch Jump",
         "workoutTime":40,
         "setCount":2,
         "pauseTime":20
     },
     {
-        "name":"Push-ups",
+        "name":"Push-Ups",
         "workoutTime":40,
         "setCount":2,
         "pauseTime":20
@@ -46,61 +46,61 @@
         ]
     },
     {
-        "name":"Feet forward jump",
+        "name":"Feet Forward Jump",
         "workoutTime":40,
         "setCount":2,
         "pauseTime":20
     },
     {
-        "name":"Straight leg lean",
+        "name":"Straight Leg Lean",
         "workoutTime":40,
         "setCount":2,
         "pauseTime":20
     },
     {
-        "name":"Parachute jump",
+        "name":"Parachute Jump",
         "workoutTime":40,
         "setCount":2,
         "pauseTime":20
     },
     {
-        "name":"Backwards lunge",
+        "name":"Backwards Lunge",
         "workoutTime":40,
         "setCount":2,
         "pauseTime":20
     },
     {
-        "name":"One leg jump",
+        "name":"One Leg Jump",
         "workoutTime":40,
         "setCount":2,
         "pauseTime":20
     },
     {
-        "name":"Abs crossed arm",
+        "name":"Crossed-Arms Situp",
         "workoutTime":40,
         "setCount":2,
         "pauseTime":20
     },
     {
-        "name":"AC-DC/Scrissor jump",
+        "name":"AC-DC/Scrissor Jump",
         "workoutTime":40,
         "setCount":2,
         "pauseTime":20
     },
     {
-        "name":"Easier leg lean",
+        "name":"Easier Leg Lean",
         "workoutTime":40,
         "setCount":2,
         "pauseTime":20
     },
     {
-        "name":"Leg lift running",
+        "name":"Leg Lift Running",
         "workoutTime":40,
         "setCount":2,
         "pauseTime":20
     },
     {
-        "name":"One leg squats",
+        "name":"One Leg Squats",
         "workoutTime":120,
         "setCount":1,
         "pauseTime":20,
@@ -115,7 +115,7 @@
         "pauseTime":20
     },
     {
-        "name":"Squat jumps",
+        "name":"Squat Jumps",
         "workoutTime":40,
         "setCount":2,
         "pauseTime":20
