@@ -1,7 +1,7 @@
 body {
     font-family: 'Arial', sans-serif;
     text-align: center;
-    margin: 20px;
+    margin: 10px;
     background-color: #ededed;
 }
 
@@ -39,9 +39,7 @@ body {
     -webkit-appearance: none;
     width: 50%;
     height: 25px;
-    margin: 0;
     background: #cdc9c9; /* Gray background */
-    transition: opacity 0.2s; /* Smooth transition on hover */
     border-radius: 6px; /* Rounded corners */
 }
 
@@ -54,19 +52,19 @@ body {
 #exercise-name {
     color: #2b2b2b;
     font-size: 40px;
-    margin: 15px;
+    margin: 10px;
 }
 
 #timer {
     color: #2b2b2b;
-    font-size: 80px;
+    font-size: 55px;
     margin: -5px;
 }
 
 #set-count {
     color: #2b2b2b;
     font-size: 25px;
-    margin: 25px;
+    margin: 10px;
 }
 
 #welcomeText {

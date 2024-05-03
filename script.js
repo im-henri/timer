@@ -285,32 +285,11 @@ function updateTextSize() {
 // -------------- Scaling UI --------------
 // ----------------------------------------
 
-function debug_function()
-{
-    // Un-hide progress bar
-    document.getElementById("progress-bar-container").hidden = false;
-    document.getElementById("progress-bar").hidden = false;
-    document.getElementById("timer").hidden = false;
-    updateUI();
-
-    workoutDone = 0;
-    requestWakeLock();
-    statemachine();
-    // Fake time forward
-    for (let i = 0; i < 1000; i++) {
-        statemachine();
-    }
-
-    // Example: Increase all text sizes by 10%
-    resetElementsWithText();
-    storeElementsWithText();
-    updateTextSize();
-}
-
 resetElementsWithText();
 storeElementsWithText();
 updateTextSize();
 
+let start_pressed = 0;
 // Must play sound by user request as modern browsers
 // don't allow playing sound without user request.
 const startButton = document.getElementById("startButton");
@@ -323,8 +302,13 @@ startButton.addEventListener('click', () => {
     document.getElementById("progress-bar-container").hidden = false;
     document.getElementById("progress-bar").hidden = false;
     document.getElementById("timer").hidden = false;
-    //
     startWorkout();
+    start_pressed = 1;
 }, { once: true });
 
-//debug_function();
+document.addEventListener('mouseup', () => {
+    if (start_pressed != 0){
+        document.getElementById("textSizeSlider").hidden
+            = !document.getElementById("textSizeSlider").hidden;
+    }
+});
